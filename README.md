@@ -4,6 +4,8 @@ This is a template for the start of a Python Project
 
 ## Usage
 
+### Cloning the Repository
+
 ```bash
 # Clone the repo
 git clone git@github.com:pszponder/template_python.git
