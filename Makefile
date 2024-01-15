@@ -32,6 +32,45 @@ no-dirty:
 
 
 # ==================================================================================== #
+# DOCKER
+# ==================================================================================== #
+
+## dbuild: build docker compose
+.PHONY: dbuild
+dbuild: Dockerfile compose.yaml
+	docker compose build
+
+## up: spin up docker compose
+.PHONY: up
+up: build
+	docker compose up
+
+## upd: spin up docker compose (in detached mode)
+.PHONY: upd
+upd: build
+	docker compose up -d
+
+## logs: view logs for docker compose
+.PHONY: logs
+logs:
+	docker logs main
+
+## logsf: view logs for docker compose, and follow
+.PHONY: logsf
+logsf:
+	docker logs -f main --tail 100
+
+## down: tear down docker compose
+.PHONY: down
+down:
+	docker compose down
+
+## down/clean: tear down docker compose, remove images used by services, & remove named volumes
+.PHONY: down/clean
+down/clean:
+	docker compose down -v --rmi all
+
+# ==================================================================================== #
 # DEPENDENCIES
 # ==================================================================================== #
 
