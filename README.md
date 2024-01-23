@@ -2,6 +2,10 @@
 
 This is a template for the start of a Python Project
 
+## Prerequisites
+
+This project template uses and requires [`poetry`](https://python-poetry.org/docs/)
+
 ## Usage
 
 ### Cloning the Repository
@@ -22,21 +26,60 @@ git add .
 git commit -m "Initial commit"
 ```
 
+### Update pyproject.toml
+
+Update the 1st part of the `pyproject.toml` file with information related to your project:
+- `name`
+- `version`
+- `description`
+- `authors`
+
+```yaml
+[tool.poetry]
+name = "python-template-project"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+```
+
 ### Create a New Virtual Environment
 
 ```bash
-# This will create a new virtual environment, update pip, and install any dependencies from requirements.txt
-make setup
+poetry shell
 ```
+
+**NOTE:** Use the `make setup` command as a shortcut to create `.venv` and install dependencies from `pyproject.toml`
 
 ### Activating & Deactivating Virtual Environment
 
 ```bash
 # Activate Virtual Environment
-. ./venv/bin/activate
+source ./.venv/bin/activate
 
 # Deactivate Virtual Environment
 deactivate
+```
+
+### Install Dependencies from pyproject.toml
+
+**NOTE:** Must first have active virtual environment
+
+```bash
+poetry install
+```
+
+### Update Dependencies
+
+```bash
+poetry update
+```
+
+### Installing New / Removing Existing Dependencies
+
+```bash
+poetry add <package_name> [--group <group_name>]
+
+poetry remove <package_name> [--group <group_name>]
 ```
 
 ### Makefile
@@ -46,7 +89,7 @@ The Makefile contains many useful recipes, to view a help file simply execute `m
 ```txt
 Usage:
   help         print this help message
-  dbuild       build docker compose
+  dbuild       build docker compose services into images
   up           spin up docker compose
   upd          spin up docker compose (in detached mode)
   logs         view logs for docker compose
@@ -59,7 +102,7 @@ Usage:
   tidy         lint & format code
   test         run all tests
   run          run main.py
-  clean        clean up all build artifacts & virtual environments
+  clean        clean up all artifacts
   push         push changes to the remote Git repository, after running quality control checks
 ```
 
@@ -113,3 +156,7 @@ make down/clean
 - [Dockerfile Reference](https://docs.docker.com/engine/reference/builder/)
 - [Docker Compose Overview](https://docs.docker.com/compose/)
 - [ArjanCodes - How to Use Docker to Make Local Development a Breeze](https://www.youtube.com/watch?v=zkMRWDQV4Tg)
+- [Official Docs - Poetry](https://python-poetry.org/)
+- [Official Docs - Poetry CLI](https://python-poetry.org/docs/cli/)
+- [ArjanCodes - How to Create and Use Virtual Environments in Python with Poetry](https://www.youtube.com/watch?v=0f3moPe_bhk)
+- [Riccardo Albertazzi - Blazing Fast Python Docker builds w/ Poetry](https://medium.com/@albertazzir/blazing-fast-python-docker-builds-with-poetry-a78a66f5aed0)

@@ -1,7 +1,7 @@
 # Makefile
 
 # Variables
-VENV = venv
+VENV = .venv
 BIN=$(VENV)/bin
 PY = $(BIN)/python3
 APP=src/main.py
@@ -35,19 +35,19 @@ no-dirty:
 # DOCKER
 # ==================================================================================== #
 
-## dbuild: build docker compose
+## dbuild: build docker compose services into images
 .PHONY: dbuild
 dbuild: Dockerfile compose.yaml
 	docker compose build
 
 ## up: spin up docker compose
 .PHONY: up
-up: build
+up: dbuild
 	docker compose up
 
 ## upd: spin up docker compose (in detached mode)
 .PHONY: upd
-upd: build
+upd: dbuild
 	docker compose up -d
 
 ## logs: view logs for docker compose
@@ -76,10 +76,9 @@ down/clean:
 
 ## setup: install virtual env, update pip, install / update dependencies
 .PHONY: setup
-setup: requirements.txt
-	python3 -m venv $(VENV)
-	$(BIN)/pip install --upgrade pip
-	$(BIN)/pip install --upgrade -r requirements.txt
+setup: pyproject.toml poetry.lock
+	poetry shell
+	poetry install
 	@echo "Setup is complete, run '. ./$(BIN)/activate' to activate the virtual environment"
 
 
@@ -126,7 +125,7 @@ run:
 # CLEANING
 # ==================================================================================== #
 
-## clean: clean up all build artifacts & virtual environments
+## clean: clean up all artifacts
 .PHONY: clean
 clean:
 	@echo "Cleaning up..."
@@ -135,6 +134,7 @@ clean:
 	rm -rf .pytest_cache
 	find . -type f -name *.pyc -delete
 	find . -type d -name __pycache__ -delete
+	@echo "Cleanup is complete, may need to run 'deactivate' to fully exit the virtual environment"
 
 
 # ==================================================================================== #
