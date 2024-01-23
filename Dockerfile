@@ -10,5 +10,5 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 # copy the scripts to the folder
 COPY . /app
 
-# start the server
+# start the app
 CMD ["python", "src/main.py"]
