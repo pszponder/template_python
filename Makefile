@@ -37,18 +37,29 @@ no-dirty:
 
 ## dbuild: build docker compose services into images
 .PHONY: dbuild
-dbuild: Dockerfile compose.yaml
+dbuild: Dockerfile docker-compose.yaml
 	docker compose build
 
 ## up: spin up docker compose
 .PHONY: up
-up: dbuild
+up: Dockerfile docker-compose.yaml
 	docker compose up
+
+
+## upb: spin up docker compose and rebuild
+.PHONY: upb
+upb: Dockerfile docker-compose.yaml
+	docker compose up --build
 
 ## upd: spin up docker compose (in detached mode)
 .PHONY: upd
-upd: dbuild
+upd: Dockerfile docker-compose.yaml
 	docker compose up -d
+
+## upd: spin up docker compose (in detached mode) and rebuild
+.PHONY: updb
+updb: Dockerfile docker-compose.yaml
+	docker compose up -d --build
 
 ## logs: view logs for docker compose
 .PHONY: logs
@@ -69,17 +80,6 @@ down:
 .PHONY: down/clean
 down/clean:
 	docker compose down -v --rmi all
-
-# ==================================================================================== #
-# DEPENDENCIES
-# ==================================================================================== #
-
-## setup: install virtual env, update pip, install / update dependencies
-.PHONY: setup
-setup: pyproject.toml poetry.lock
-	poetry shell
-	poetry install
-	@echo "Setup is complete, run '. ./$(BIN)/activate' to activate the virtual environment"
 
 
 # ==================================================================================== #
@@ -129,12 +129,10 @@ run:
 .PHONY: clean
 clean:
 	@echo "Cleaning up..."
-	rm -rf $(VENV)
 	rm -rf .ruff_cache
 	rm -rf .pytest_cache
 	find . -type f -name *.pyc -delete
 	find . -type d -name __pycache__ -delete
-	@echo "Cleanup is complete, may need to run 'deactivate' to fully exit the virtual environment"
 
 
 # ==================================================================================== #

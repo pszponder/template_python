@@ -42,36 +42,26 @@ description = ""
 authors = ["Your Name <you@example.com>"]
 ```
 
-### Create a New Virtual Environment
+### Install + Update Dependencies from pyproject.toml
 
 ```bash
-poetry shell
-```
-
-**NOTE:** Use the `make setup` command as a shortcut to create `.venv` and install dependencies from `pyproject.toml`
-
-### Activating & Deactivating Virtual Environment
-
-```bash
-# Activate Virtual Environment
-source ./.venv/bin/activate
-
-# Deactivate Virtual Environment
-deactivate
-```
-
-### Install Dependencies from pyproject.toml
-
-**NOTE:** Must first have active virtual environment
-
-```bash
+# Install dependencies specified in pyproject.toml
 poetry install
 ```
 
-### Update Dependencies
+```bash
+# Update dependencies in pyproject.toml
+poetry update
+```
+
+### Create / Activate / Deactivate a New Virtual Environment
 
 ```bash
-poetry update
+# Creates and/or Activates new Virtual Environment
+poetry shell
+
+# Deactivate Virtual Environment
+exit
 ```
 
 ### Installing New / Removing Existing Dependencies
@@ -91,12 +81,13 @@ Usage:
   help         print this help message
   dbuild       build docker compose services into images
   up           spin up docker compose
+  upb          spin up docker compose and rebuild
   upd          spin up docker compose (in detached mode)
+  upd          spin up docker compose (in detached mode) and rebuild
   logs         view logs for docker compose
   logsf        view logs for docker compose, and follow
   down         tear down docker compose
   down/clean   tear down docker compose, remove images used by services, & remove named volumes
-  setup        install virtual env, update pip, install / update dependencies
   lint         lints code using ruff linter
   format       formats code using ruff formatter
   tidy         lint & format code
