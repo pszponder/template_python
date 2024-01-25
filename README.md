@@ -79,11 +79,10 @@ The Makefile contains many useful recipes, to view a help file simply execute `m
 ```txt
 Usage:
   help         print this help message
-  dbuild       build docker compose services into images
-  up           spin up docker compose
-  upb          spin up docker compose and rebuild
-  upd          spin up docker compose (in detached mode)
-  upd          spin up docker compose (in detached mode) and rebuild
+  up           spin up docker compose development service
+  upd          spin up docker compose development service (in detatched mode)
+  up/prod      spin up docker compose production service
+  upd/prod     spin up docker compose production service (in detatched mode)
   logs         view logs for docker compose
   logsf        view logs for docker compose, and follow
   down         tear down docker compose
@@ -104,7 +103,7 @@ Usage:
 docker compose build
 
 # Spin up docker compose
-docker compose up [-d]
+docker compose up [-d] <development/production>
 
 # View logs for "main" container
 docker logs [-f] main [--tail 100]
@@ -113,29 +112,7 @@ docker logs [-f] main [--tail 100]
 docker compose down [-v --rmi all]
 ```
 
-Can also use make commands
-```bash
-# Builds the docker compose
-make dbuild
-
-# Spin up docker compose
-make up
-
-# Spin up docker compose in detached mode
-make upd
-
-# View logs for main container
-make logs
-
-# View logs for main container and follow
-make logsf
-
-# Spin down docker compose
-make down
-
-# Spin down docker compose & remove images and volumes
-make down/clean
-```
+Can also use make commands (refer to Docker section of `MakeFile`)
 
 ## Resources / References
 
@@ -151,3 +128,4 @@ make down/clean
 - [Official Docs - Poetry CLI](https://python-poetry.org/docs/cli/)
 - [ArjanCodes - How to Create and Use Virtual Environments in Python with Poetry](https://www.youtube.com/watch?v=0f3moPe_bhk)
 - [Riccardo Albertazzi - Blazing Fast Python Docker builds w/ Poetry](https://medium.com/@albertazzir/blazing-fast-python-docker-builds-with-poetry-a78a66f5aed0)
+- [usr-ein -- Multistaged Dockerfile for Poetry](https://gist.github.com/usr-ein/c42d98abca3cb4632ab0c2c6aff8c88a)

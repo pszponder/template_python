@@ -1,7 +1,18 @@
+version: "3.8"
+
 services:
-  app:
-    build: .
-    container_name: main
-    command: python src/main.py
+  development:
+    build:
+      context: .
+      target: development
+    # ports:
+    #   - "8000:8000"
     volumes:
-      - .:/app
+      - ./src:/app # map local src dir to /app in docker container (bind mount)
+
+  production:
+    build:
+      context: .
+      target: production
+    # ports:
+    #   - "8000:8000"

@@ -35,41 +35,35 @@ no-dirty:
 # DOCKER
 # ==================================================================================== #
 
-## dbuild: build docker compose services into images
-.PHONY: dbuild
-dbuild: Dockerfile docker-compose.yaml
-	docker compose build
-
-## up: spin up docker compose
+## up: spin up docker compose development service
 .PHONY: up
 up: Dockerfile docker-compose.yaml
-	docker compose up
+	docker compose up development
 
-
-## upb: spin up docker compose and rebuild
-.PHONY: upb
-upb: Dockerfile docker-compose.yaml
-	docker compose up --build
-
-## upd: spin up docker compose (in detached mode)
+## upd: spin up docker compose development service (in detatched mode)
 .PHONY: upd
 upd: Dockerfile docker-compose.yaml
-	docker compose up -d
+	docker compose up development -d
 
-## upd: spin up docker compose (in detached mode) and rebuild
-.PHONY: updb
-updb: Dockerfile docker-compose.yaml
-	docker compose up -d --build
+## up/prod: spin up docker compose production service
+.PHONY: up/prod
+up/prod: Dockerfile docker-compose.yaml
+	docker compose up development
+
+## upd/prod: spin up docker compose production service (in detatched mode)
+.PHONY: upd/prod
+upd/prod: Dockerfile docker-compose.yaml
+	docker compose up development -d
 
 ## logs: view logs for docker compose
 .PHONY: logs
 logs:
-	docker logs main
+	docker compose logs
 
 ## logsf: view logs for docker compose, and follow
 .PHONY: logsf
 logsf:
-	docker logs -f main --tail 100
+	docker compose logs -f main --tail 100
 
 ## down: tear down docker compose
 .PHONY: down
@@ -79,7 +73,7 @@ down:
 ## down/clean: tear down docker compose, remove images used by services, & remove named volumes
 .PHONY: down/clean
 down/clean:
-	docker compose down -v --rmi all
+	docker compose down -v --rmi all --remove-orphans
 
 
 # ==================================================================================== #
