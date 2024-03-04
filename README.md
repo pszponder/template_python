@@ -2,10 +2,6 @@
 
 This is a template for the start of a Python Project
 
-## Prerequisites
-
-This project template uses and requires [`poetry`](https://python-poetry.org/docs/)
-
 ## Usage
 
 ### Cloning the Repository
@@ -26,50 +22,44 @@ git add .
 git commit -m "Initial commit"
 ```
 
-### Update pyproject.toml
-
-Update the 1st part of the `pyproject.toml` file with information related to your project:
-- `name`
-- `version`
-- `description`
-- `authors`
-
-```yaml
-[tool.poetry]
-name = "python-template-project"
-version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
-```
-
-### Install + Update Dependencies from pyproject.toml
+### Create new virtual environment
 
 ```bash
-# Install dependencies specified in pyproject.toml
-poetry install
+# Create Virtual Environment
+python -m venv .venv --upgrade-deps --clear
 ```
 
+### Activate Virtual Environment
+
 ```bash
-# Update dependencies in pyproject.toml
-poetry update
+# Activate Virtual Environment
+. .venv/bin/activate
 ```
 
-### Create / Activate / Deactivate a New Virtual Environment
+### Install python dependencies
 
 ```bash
-# Creates and/or Activates new Virtual Environment
-poetry shell
+pip install -r requirements.txt
+```
 
-# Deactivate Virtual Environment
-exit
+### Update python dependencies
+
+```bash
+pip freeze > requirements.txt
+```
+
+### Deactivate Virtual Environment
+
+```bash
+deactivate
 ```
 
 ### Installing New / Removing Existing Dependencies
 
 ```bash
-poetry add <package_name> [--group <group_name>]
+pip install <package_name>
 
-poetry remove <package_name> [--group <group_name>]
+pip uninstall <package_name>
 ```
 
 ### Makefile
@@ -79,10 +69,8 @@ The Makefile contains many useful recipes, to view a help file simply execute `m
 ```txt
 Usage:
   help         print this help message
-  up           spin up docker compose development service
-  upd          spin up docker compose development service (in detatched mode)
-  up/prod      spin up docker compose production service
-  upd/prod     spin up docker compose production service (in detatched mode)
+  up           spin up docker compose service
+  upd          spin up docker compose service as a detatched service
   logs         view logs for docker compose
   logsf        view logs for docker compose, and follow
   down         tear down docker compose
@@ -103,7 +91,7 @@ Usage:
 docker compose build
 
 # Spin up docker compose
-docker compose up [-d] <development/production>
+docker compose up [-d] [build]
 
 # View logs for "main" container
 docker logs [-f] main [--tail 100]

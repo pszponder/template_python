@@ -1,18 +1,8 @@
-version: "3.8"
+version: "3"
 
 services:
-  development:
-    build:
-      context: .
-      target: development
-    # ports:
-    #   - "8000:8000"
+  app:
+    build: .
     volumes:
-      - ./src:/app # map local src dir to /app in docker container (bind mount)
-
-  production:
-    build:
-      context: .
-      target: production
-    # ports:
-    #   - "8000:8000"
+      - .:/app
+    working_dir: /app

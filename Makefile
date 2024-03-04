@@ -35,25 +35,15 @@ no-dirty:
 # DOCKER
 # ==================================================================================== #
 
-## up: spin up docker compose development service
+## up: spin up docker compose service
 .PHONY: up
 up: Dockerfile docker-compose.yaml
-	docker compose up development
+	docker compose up
 
-## upd: spin up docker compose development service (in detatched mode)
+## upd: spin up docker compose service as a detatched service
 .PHONY: upd
 upd: Dockerfile docker-compose.yaml
-	docker compose up development -d
-
-## up/prod: spin up docker compose production service
-.PHONY: up/prod
-up/prod: Dockerfile docker-compose.yaml
-	docker compose up development
-
-## upd/prod: spin up docker compose production service (in detatched mode)
-.PHONY: upd/prod
-upd/prod: Dockerfile docker-compose.yaml
-	docker compose up development -d
+	docker compose up -d
 
 ## logs: view logs for docker compose
 .PHONY: logs
