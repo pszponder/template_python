@@ -83,12 +83,12 @@ down/clean:
 ## lint: lints code using ruff linter
 .PHONY: lint
 lint:
-	$(BIN)/ruff check .
+	$(BIN)/ruff check
 
 ## format: formats code using ruff formatter
 .PHONY: format
 format:
-	$(BIN)/ruff format .
+	$(BIN)/ruff format
 
 ## tidy: lint & format code
 .PHONY: tidy
