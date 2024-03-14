@@ -40,7 +40,7 @@ no-dirty:
 up: Dockerfile docker-compose.yaml
 	docker compose up
 
-## upd: spin up docker compose service as a detatched service
+## upd: spin up docker compose service as a detached service
 .PHONY: upd
 upd: Dockerfile docker-compose.yaml
 	docker compose up -d

@@ -70,7 +70,7 @@ The Makefile contains many useful recipes, to view a help file simply execute `m
 Usage:
   help         print this help message
   up           spin up docker compose service
-  upd          spin up docker compose service as a detatched service
+  upd          spin up docker compose service as a detached service
   logs         view logs for docker compose
   logsf        view logs for docker compose, and follow
   down         tear down docker compose
