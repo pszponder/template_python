@@ -2,6 +2,10 @@
 
 This is a template for the start of a Python Project
 
+## Prerequisites
+
+[uv - Extremely fast Python package installer and resolver written in rust](https://github.com/astral-sh/uv)
+
 ## Usage
 
 ### Cloning the Repository
@@ -26,62 +30,44 @@ git commit -m "Initial commit"
 
 ```bash
 # Create Virtual Environment
-python -m venv .venv --upgrade-deps --clear
+uv venv
 ```
 
 ### Activate Virtual Environment
 
 ```bash
 # Activate Virtual Environment
-. .venv/bin/activate
+source .venv/bin/activate
 ```
 
-### Install python dependencies
+### Install / Remove python dependencies
 
 ```bash
-pip install -r requirements.txt
+# Install from requirements.txt file
+uv pip install -r requirements.txt
+
+# Install a package
+uv pip install <package_name> [<pkg2>, <pkg3>, ...]
+
+# Uninstall a package
+uv pip uninstall <package_name> [<pkg2>, <pkg3>, ...]
 ```
 
-### Update python dependencies
+```bash
+# Update requirements.txt
+uv pip freeze > requirements.txt
+```
+
+### Running the Main Application
 
 ```bash
-pip freeze > requirements.txt
+python src/main.py
 ```
 
 ### Deactivate Virtual Environment
 
 ```bash
 deactivate
-```
-
-### Installing New / Removing Existing Dependencies
-
-```bash
-pip install <package_name>
-
-pip uninstall <package_name>
-```
-
-### Makefile
-
-The Makefile contains many useful recipes, to view a help file simply execute `make` in your terminal
-
-```txt
-Usage:
-  help         print this help message
-  up           spin up docker compose service
-  upd          spin up docker compose service as a detached service
-  logs         view logs for docker compose
-  logsf        view logs for docker compose, and follow
-  down         tear down docker compose
-  down/clean   tear down docker compose, remove images used by services, & remove named volumes
-  lint         lints code using ruff linter
-  format       formats code using ruff formatter
-  tidy         lint & format code
-  test         run all tests
-  run          run main.py
-  clean        clean up all artifacts
-  push         push changes to the remote Git repository, after running quality control checks
 ```
 
 ### Using Docker
@@ -91,7 +77,7 @@ Usage:
 docker compose build
 
 # Spin up docker compose
-docker compose up [-d] [build]
+docker compose up [-d] [--build]
 
 # View logs for "main" container
 docker logs [-f] main [--tail 100]
@@ -100,13 +86,12 @@ docker logs [-f] main [--tail 100]
 docker compose down [-v --rmi all]
 ```
 
-Can also use make commands (refer to Docker section of `MakeFile`)
-
 ## Resources / References
 
 - [Bastian Benthur - Writing Makefiles for Python Projects](https://venthur.de/2021-03-31-python-makefiles.html)
 - [Alex Edwards - A Time Saving Makefile for your Go Project](https://www.alexedwards.net/blog/a-time-saving-makefile-for-your-go-projects)
 - [ruff - Python linter & Formatter](https://github.com/astral-sh/ruff)
+- [uv - fast python package installer and resolver](https://github.com/astral-sh/uv)
 - [Pytest](https://docs.pytest.org/en)
 - [freeCodeCamp - Pytest Tutorial - How to Test Python Code](https://www.youtube.com/watch?v=cHYq1MRoyI0)
 - [Dockerfile Reference](https://docs.docker.com/engine/reference/builder/)
