@@ -1147,7 +1147,7 @@ packages:
   name: template-python
   version: 0.1.0
   path: .
-  sha256: ae65934051e23052c5d6fdd928d9752be595e8fa21525c9eeb34f8e7b08a8205
+  sha256: e6eba885bf2e757aa1822450b448231274fea77f345d588eae59c73969b8f4b7
   requires_python: '>=3.11'
   editable: true
 - kind: conda

@@ -20,8 +20,27 @@ platforms = ["linux-64", "osx-arm64", "osx-64", "win-64"]
 template_python = { path = ".", editable = true }
 
 [tool.pixi.tasks]
+start = "python src/main.py"
+lint = "ruff lint"
 
 [tool.pixi.dependencies]
 ruff = ">=0.4.4,<0.5"
 pytest = ">=8.2.0,<8.3"
 python-dotenv = ">=1.0.1,<1.1"
+
+[tool.ruff.lint]
+select = [
+	# pycodestyle
+	"E",
+	# Pyflakes
+	"F",
+	# pyupgrade
+	"UP",
+	# flake8-bugbear
+	"B",
+	# flake8-simplify
+	"SIM",
+	# isort
+	"I",
+]
+ignore = ["F401"]
