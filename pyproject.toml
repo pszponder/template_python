@@ -14,14 +14,16 @@ build-backend = "setuptools.build_meta"
 
 [tool.pixi.project]
 channels = ["conda-forge"]
-platforms = ["linux-64", "osx-arm64", "osx-64", "win-64"]
+platforms = ["linux-64", "osx-arm64"]
 
 [tool.pixi.pypi-dependencies]
 template_python = { path = ".", editable = true }
 
 [tool.pixi.tasks]
 start = "python src/main.py"
-lint = "ruff lint"
+format = "ruff format"
+lint = "ruff check --fix"
+
 
 [tool.pixi.dependencies]
 ruff = ">=0.4.4,<0.5"
