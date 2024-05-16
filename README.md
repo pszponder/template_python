@@ -4,7 +4,7 @@ This is a template for the start of a Python Project
 
 ## Prerequisites
 
-[uv - Extremely fast Python package installer and resolver written in rust](https://github.com/astral-sh/uv)
+[pixi](https://prefix.dev/)
 
 ## Usage
 
@@ -26,48 +26,33 @@ git add .
 git commit -m "Initial commit"
 ```
 
-### Create new virtual environment
+### Create / Activate New Virtual Environment
 
 ```bash
-# Create Virtual Environment
-uv venv
-```
-
-### Activate Virtual Environment
-
-```bash
-# Activate Virtual Environment
-source .venv/bin/activate
+# Creates (if it does not exist) .pixi directory
+# and activate the virtual environment
+pixi shell
 ```
 
 ### Install / Remove python dependencies
 
 ```bash
-# Install from requirements.txt file
-uv pip install -r requirements.txt
-
 # Install a package
-uv pip install <package_name> [<pkg2>, <pkg3>, ...]
+pixi add <package_name> [<pkg2>, <pkg3>, ...]
 
 # Uninstall a package
-uv pip uninstall <package_name> [<pkg2>, <pkg3>, ...]
-```
-
-```bash
-# Update requirements.txt
-uv pip freeze > requirements.txt
-```
+pixi remove <package_name> [<pkg2>, <pkg3>, ...]
 
 ### Running the Main Application
 
 ```bash
-python src/main.py
+pixi run start
 ```
 
 ### Deactivate Virtual Environment
 
 ```bash
-deactivate
+exit
 ```
 
 ### Using Docker
@@ -85,6 +70,10 @@ docker logs [-f] main [--tail 100]
 # Spin down docker compose
 docker compose down [-v --rmi all]
 ```
+
+## Pixi Tasks
+
+You can run tasks specified under `[tool.pixi.tasks]` by invoking `pixi run <task_name>`
 
 ## Resources / References
 
