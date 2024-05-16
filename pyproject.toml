@@ -21,9 +21,10 @@ template_python = { path = ".", editable = true }
 
 [tool.pixi.tasks]
 start = "python src/main.py"
+scratch = "python src/_scratch/scratch.py"
+test = "pytest"
 format = "ruff format"
 lint = "ruff check --fix"
-
 
 [tool.pixi.dependencies]
 ruff = ">=0.4.4,<0.5"
