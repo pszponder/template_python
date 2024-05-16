@@ -42,6 +42,7 @@ pixi add <package_name> [<pkg2>, <pkg3>, ...]
 
 # Uninstall a package
 pixi remove <package_name> [<pkg2>, <pkg3>, ...]
+```
 
 ### Running the Main Application
 
