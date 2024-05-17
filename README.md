@@ -4,11 +4,11 @@ This is a template for the start of a Python Project
 
 ## Prerequisites
 
-[pixi](https://prefix.dev/)
+- [uv - Extremely fast Python package installer and resolver written in rust](https://github.com/astral-sh/uv)
+- [just (make alternative)](https://github.com/casey/just)
 
-## Usage
 
-### Cloning the Repository
+## Cloning the Repository
 
 ```bash
 # Clone the repo
@@ -26,12 +26,32 @@ git add .
 git commit -m "Initial commit"
 ```
 
-### Create / Activate New Virtual Environment
+## Quick Start
 
 ```bash
-# Creates (if it does not exist) .pixi directory
-# and activate the virtual environment
-pixi shell
+# Create new .venv and install requirements
+just init
+
+# Activate virtual environment
+source .venv/bin/activate
+```
+
+## Usage
+
+### Create new virtual environment
+
+```bash
+# Create Virtual Environment
+uv venv
+```
+
+### Activate Virtual Environment
+
+**NOTE:** Upon first activation of virtual environment, make sure to install dependencies from `requirements.txt`
+
+```bash
+# Activate Virtual Environment
+source .venv/bin/activate
 ```
 
 ### Install / Remove python dependencies
@@ -72,12 +92,16 @@ docker logs [-f] main [--tail 100]
 docker compose down [-v --rmi all]
 ```
 
-## Pixi Tasks
+## Using Just Commands
 
-You can run tasks specified under `[tool.pixi.tasks]` by invoking `pixi run <task_name>`
+```bash
+# Run just to view list of options
+just
+```
 
 ## Resources / References
 
+- [just (make alternative)](https://github.com/casey/just)
 - [Bastian Benthur - Writing Makefiles for Python Projects](https://venthur.de/2021-03-31-python-makefiles.html)
 - [Alex Edwards - A Time Saving Makefile for your Go Project](https://www.alexedwards.net/blog/a-time-saving-makefile-for-your-go-projects)
 - [ruff - Python linter & Formatter](https://github.com/astral-sh/ruff)
