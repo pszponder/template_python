@@ -2,6 +2,11 @@
 
 This is a template for the start of a Python Project
 
+## CAUTION
+
+This setup w/ pixi is not yet ready, pixi needs more time to mature before completing:
+- unable to use pixi inside dockerfile
+
 ## Prerequisites
 
 [pixi](https://prefix.dev/)
