@@ -2,13 +2,7 @@
 
 This is a template for the start of a Python Project
 
-## Prerequisites
-
-[uv - Extremely fast Python package installer and resolver written in rust](https://github.com/astral-sh/uv)
-
-## Usage
-
-### Cloning the Repository
+## Cloning the Repository
 
 ```bash
 # Clone the repo
@@ -26,11 +20,26 @@ git add .
 git commit -m "Initial commit"
 ```
 
+## Quick Start
+
+```bash
+# Create new .venv
+python3 -m venv .venv
+
+# Activate Virtual Environment (.venv)
+source .venv/bin/activate
+
+# Install packages
+pip install -r requirements.txt
+```
+
+## Usage
+
 ### Create new virtual environment
 
 ```bash
 # Create Virtual Environment
-uv venv
+python3 -m venv .venv
 ```
 
 ### Activate Virtual Environment
@@ -44,18 +53,18 @@ source .venv/bin/activate
 
 ```bash
 # Install from requirements.txt file
-uv pip install -r requirements.txt
+pip install -r requirements.txt
 
 # Install a package
-uv pip install <package_name> [<pkg2>, <pkg3>, ...]
+pip install <package_name> [<pkg2>, <pkg3>, ...]
 
 # Uninstall a package
-uv pip uninstall <package_name> [<pkg2>, <pkg3>, ...]
+pip uninstall <package_name> [<pkg2>, <pkg3>, ...]
 ```
 
 ```bash
 # Update requirements.txt
-uv pip freeze > requirements.txt
+pip freeze > requirements.txt
 ```
 
 ### Running the Main Application

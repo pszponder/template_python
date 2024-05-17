@@ -36,12 +36,12 @@ no-dirty:
 ## venv: create new virtual envronment
 .PHONY: venv
 venv:
-	uv venv
+	python3 -m venv .venv
 
 ## install: install dependencies into .venv
 .PHONY: install
 install: .venv requirements.txt
-	uv pip install -r requirements.txt
+	pip install -r requirements.txt
 
 ## init: create .venv and install dependencies
 .PHONY: init
