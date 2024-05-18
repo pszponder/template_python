@@ -12,7 +12,7 @@ This is a template for the start of a Python Project
 
 ```bash
 # Clone the repo
-git clone git@github.com:pszponder/template_python.git
+git clone --depth 1 git@github.com:pszponder/template_python.git
 
 # Navigate to project and remove existing git dirs
 cd <repo_name>
