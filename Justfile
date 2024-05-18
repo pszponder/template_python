@@ -53,6 +53,10 @@ run:
 # Packages
 # ================================================
 
+# Update requirements.txt file
+update:
+	uv pip freeze > requirements.txt
+
 # Add package to project
 add package:
 	uv pip install {{package}}
