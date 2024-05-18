@@ -46,7 +46,7 @@ init:
 
 # Run main.py
 run:
-	$PY ./src/main.py
+	$PY src/main.py
 
 
 # ================================================
