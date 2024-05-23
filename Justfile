@@ -45,8 +45,13 @@ init:
 # ================================================
 
 # Run main.py
-run:
+start:
 	$PY src/main.py
+
+# Run scratch.py (if it does not exist, create a new scratch.py file)
+scratch:
+	@if [ ! -f src/scratch.py ]; then echo 'print("Running scratch file...")' > src/scratch.py; fi
+	$PY src/scratch.py
 
 
 # ================================================
@@ -57,14 +62,14 @@ run:
 update:
 	uv pip freeze > requirements.txt
 
-# Add package to project
-add package:
-	uv pip install {{package}}
+# Add one or more packages to the project
+add +packages:
+	uv pip install {{packages}}
 	uv pip freeze > requirements.txt
 
-# Remove package from project
-remove package:
-	uv pip uninstall {{package}}
+# Remove one or more packages from the project
+remove +packages:
+	uv pip uninstall {{packages}}
 	uv pip freeze > requirements.txt
 
 
