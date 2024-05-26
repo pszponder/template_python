@@ -1,5 +1,8 @@
+from utils.logger import logger
+
+
 def main():
-    print("It Works!")
+    logger.info("It Works!")
 
 
 if __name__ == "__main__":
