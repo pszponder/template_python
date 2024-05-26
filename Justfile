@@ -15,6 +15,7 @@
 # ================================================
 # VARIABLES
 # ================================================
+PROJECT_NAME := "python-proj"
 BIN := ".venv/bin"
 PY := ".venv/bin/python3"
 
@@ -47,6 +48,8 @@ init:
 # Run main.py
 start:
 	$PY src/main.py
+
+alias run := start
 
 # Run scratch.py (if it does not exist, create a new scratch.py file)
 scratch:
@@ -114,6 +117,10 @@ clean:
 # ================================================
 # DOCKER
 # ================================================
+
+# Build docker image from Dockerfile
+dbuild:
+	docker build -t $PROJECT_NAME .
 
 # Spin up docker compose service
 up:
