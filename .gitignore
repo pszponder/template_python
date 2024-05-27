@@ -169,5 +169,5 @@ cython_debug/
 # vscode
 .vscode/
 
-# scratch.py
-scratch.py
+# scratchpad
+scratchpad.py

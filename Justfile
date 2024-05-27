@@ -51,10 +51,10 @@ start:
 
 alias run := start
 
-# Run scratch.py (if it does not exist, create a new scratch.py file)
-scratch:
-	@if [ ! -f src/scratch.py ]; then echo 'print("Running scratch file...")' > src/scratch.py; fi
-	$PY src/scratch.py
+# Run scratchpad.py (if it does not exist, create a new scratch.py file)
+scratchpad:
+	@if [ ! -f src/scratchpad.py ]; then echo 'print("Running scratchpad file...")' > src/scratchpad.py; fi
+	$PY src/scratchpad.py
 
 
 # ================================================
