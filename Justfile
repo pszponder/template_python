@@ -65,6 +65,23 @@ scratch:
 update:
 	uv pip freeze > requirements.txt
 
+# Upgrade all package dependencies to newest available version in requirements.txt
+upgrade:
+	# modify version specifiers in requirements.txt to >=
+	@just {{ if os() == "darwin" { "modify-darwin" } else { "modify-linux" } }}
+
+	# Upgrade installed packages to latest versions
+	uv pip install -U -r requirements.txt
+
+	# Update requirements.txt to use compatible version specifiers (~=)
+	uv pip freeze | sed 's/==/~=/' > requirements.txt
+
+modify-darwin:
+	sed -i '' 's/[~=]=/>=/' requirements.txt
+
+modify-linux:
+	sed -i 's/[~=]=/>=/' requirements.txt
+
 # Add one or more packages to the project
 add +packages:
 	uv pip install {{packages}}
@@ -74,7 +91,6 @@ add +packages:
 remove +packages:
 	uv pip uninstall {{packages}}
 	uv pip freeze > requirements.txt
-
 
 # ================================================
 # QUALITY CONTROL
