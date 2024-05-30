@@ -87,6 +87,9 @@ deactivate
 ### Using Docker
 
 ```bash
+# Build an image using docker build
+docker build [-t <image-name>] .
+
 # Build Docker Compose
 docker compose build
 
@@ -105,6 +108,21 @@ docker compose down [-v --rmi all]
 ```bash
 # Run just to view list of options
 just
+```
+
+## Automating running app using Cron
+
+1. **NOTE:** Make sure that you have build a docker image before setting up your cron job
+2. Add a cron job to crontab
+
+```bash
+# Run app every 15 minutes
+*/15 * * * * cd <absolute-path-to-repo> && docker compose up -d
+```
+3. Verify Cron Job was added by listing the current crontab entries
+
+```bash
+crontab -l
 ```
 
 ## Resources / References
