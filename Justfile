@@ -140,11 +140,21 @@ dbuild:
 
 # Spin up docker compose service
 up:
+	docker compose up
+
+# Spin up docker compose service (and build)
+upb:
 	docker compose up --build
 
 # Spin up docker compose service as a detatched service
 upd:
+	docker compose up -d
+
+# Spin up docker compose service as detatched service (and build)
+upbd:
 	docker compose up -d --build
+
+alias updb := updb
 
 # view logs for docker compose
 logs:
