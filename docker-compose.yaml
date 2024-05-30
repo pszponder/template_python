@@ -1,6 +1,9 @@
 services:
   app:
+    # image: <your-image-name-here>
     build: .
     working_dir: /app # (OPTIONAL): Overwrite working directory from Dockerfile
     volumes:
       - .:/app
+    env_file:
+      - .env
