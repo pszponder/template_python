@@ -154,7 +154,7 @@ upd:
 upbd:
 	docker compose up -d --build
 
-alias updb := updb
+alias updb := upbd
 
 # view logs for docker compose
 logs:
