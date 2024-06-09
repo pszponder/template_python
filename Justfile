@@ -68,7 +68,7 @@ update:
 # Upgrade all package dependencies to newest available version in requirements.txt
 upgrade:
 	# modify version specifiers in requirements.txt to >=
-	@just {{ if os() == "darwin" { "modify-darwin" } else { "modify-linux" } }}
+	@just {{ if os() == "darwin" { "_modify-darwin" } else { "_modify-linux" } }}
 
 	# Upgrade installed packages to latest versions
 	uv pip install -U -r requirements.txt
@@ -76,10 +76,10 @@ upgrade:
 	# Update requirements.txt to use compatible version specifiers (~=)
 	uv pip freeze | sed 's/==/~=/' > requirements.txt
 
-modify-darwin:
+_modify-darwin:
 	sed -i '' 's/[~=]=/>=/' requirements.txt
 
-modify-linux:
+_modify-linux:
 	sed -i 's/[~=]=/>=/' requirements.txt
 
 # Add one or more packages to the project
